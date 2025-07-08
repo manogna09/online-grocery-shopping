@@ -1,0 +1,41 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header><h1>Payment</h1></header>
+  <section>
+    <form id="payment-form">
+      <label for="name">Name on Card:</label>
+      <input type="text" id="name" required>
+      <label for="card-number">Card Number:</label>
+      <input type="number" id="card-number" required>
+      <label for="payment-method">Payment Method:</label>
+      <select id="payment-method" required>
+        <option value="upi">UPI</option>
+        <option value="cod">Cash on Delivery</option>
+        <option value="card">Credit/Debit Card</option>
+      </select>
+      <button type="button" onclick="processPayment()">Pay Now</button>
+    </form>
+  </section>
+  <footer><p>&copy; 2025 Grocery Shop</p></footer>
+  <script>
+    function processPayment() {
+      const name = document.getElementById('name').value;
+      const method = document.getElementById('payment-method').value;
+      if (method === 'upi') {
+        alert(`UPI payment processed for ${name}`);
+      } else if (method === 'cod') {
+        alert('Cash on Delivery selected.');
+      } else if (method === 'card') {
+        alert(`Card payment processed for ${name}`);
+      }
+    }
+  </script>
+</body>
+</html>
