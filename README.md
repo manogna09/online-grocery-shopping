@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛒 Online Grocery Shopping Website
 
 A simple front-end project that simulates an online grocery shopping experience. This web-based UI includes user login, item selection, order history, checkout, and payment pages — ideal for showcasing beginner-friendly HTML & CSS skills.
@@ -53,3 +54,6 @@ _Add screenshots of the UI pages here to visually showcase your design._
 ## 📌 Note
 
 This is a static front-end project — no backend/database functionality is included. It can be extended using JavaScript and backend technologies like Node.js or Java.
+=======
+# online-grocery-shopping
+>>>>>>> dd424ca3194c5e55b6917cdd93fe55f0fb8577c6
