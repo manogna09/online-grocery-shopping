@@ -1,0 +1,26 @@
+<!-- history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order History</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header><h1>Order History</h1></header>
+  <section><ul id="order-list"></ul></section>
+  <script>
+    const orderList = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    const listContainer = document.getElementById('order-list');
+    if (orderList.length === 0) {
+      listContainer.innerHTML = '<p>No past orders found.</p>';
+    } else {
+      orderList.forEach((order, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>Order ${index + 1}</strong>: ${order.map(i => \`\${i.qty} x \${i.name}\`).join(', ')} (₹${order.reduce((sum, i) => sum + i.price, 0).toFixed(2)})`;
+        listContainer.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

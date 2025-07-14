@@ -1,0 +1,84 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grocery Selection</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Grocery Selection</h1>
+    <a href="history.html">Order History</a>
+  </header>
+  <section id="item-section">
+    <div id="items-container"></div>
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="addToCart()">Add to Cart</button>
+  </section>
+  <section class="cart-section">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total:</strong> ₹<span id="total-price">0.00</span></p>
+    <button onclick="redirectToCheckout()">Proceed to Checkout</button>
+  </section>
+  <script>
+    const items = ["Rice", "Wheat", "Oil", "Milk", "Eggs", "Bread", "Salt"];
+    let cart = [];
+
+    function addItem() {
+      const container = document.getElementById('items-container');
+      const div = document.createElement('div');
+
+      const select = document.createElement('select');
+      items.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        select.appendChild(option);
+      });
+
+      const qty = document.createElement('input');
+      qty.type = 'number';
+      qty.value = 1;
+
+      div.appendChild(select);
+      div.appendChild(qty);
+      container.appendChild(div);
+    }
+
+    function addToCart() {
+      cart = [];
+      const container = document.getElementById('items-container');
+      const divs = container.querySelectorAll('div');
+
+      divs.forEach(div => {
+        const select = div.querySelector('select');
+        const qty = div.querySelector('input');
+        if (select && qty && qty.value > 0) {
+          cart.push({ name: select.value, qty: parseInt(qty.value), price: 20 * parseInt(qty.value) });
+        }
+      });
+
+      const cartList = document.getElementById('cart-items');
+      cartList.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.qty} x ${item.name} - ₹${item.price}`;
+        cartList.appendChild(li);
+        total += item.price;
+      });
+      document.getElementById('total-price').textContent = total.toFixed(2);
+    }
+
+    function redirectToCheckout() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      let history = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      history.push(cart);
+      localStorage.setItem('orderHistory', JSON.stringify(history));
+      window.location.href = 'checkout.html';
+    }
+  </script>
+</body>
+</html>
