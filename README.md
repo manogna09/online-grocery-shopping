@@ -43,17 +43,11 @@ online-grocery-shopping/
     └── style.css       # Styling for all pages
 ```
 
-## 📸 Screenshots (Optional)
-_Add screenshots of the UI pages here to visually showcase your design._
 
 ## 🙋‍♀️ Author
 
 **Manogna**  
 📬 [GitHub: @manogna09](https://github.com/manogna09)
 
-## 📌 Note
-
-This is a static front-end project — no backend/database functionality is included. It can be extended using JavaScript and backend technologies like Node.js or Java.
-=======
 # online-grocery-shopping
 >>>>>>> dd424ca3194c5e55b6917cdd93fe55f0fb8577c6
